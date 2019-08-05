@@ -1,11 +1,10 @@
 <?php
-
 define('TOKEN', '82');
 define('CHATID', '35');
 define('API', 'https://api.telegram.org/bot'.TOKEN.'/');
 
-$data = file_get_contents('php://input');
-$data = json_decode($data);
+$data = json_decode(file_get_contents('php://input'));
+
 switch ($data->message->text) {
 	case '/start':
 		file_get_contents(API.'sendMessage?chat_id='.$data->message->chat->id.'&text=Напиши мне, а я передам все своему хозяину ');
